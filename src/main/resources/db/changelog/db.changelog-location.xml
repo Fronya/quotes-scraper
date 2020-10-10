@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd">
+    <changeSet  id="3"  author="Fronya">
+        <comment>Create Location table</comment>
+        <createTable tableName="location" schemaName="main">
+            <column autoIncrement="true" name="id" type="integer">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="country" type="varchar(255)"/>
+            <column name="city" type="varchar(255)"/>
+        </createTable>
+        <rollback>
+            <delete tableName="location" schemaName="main"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

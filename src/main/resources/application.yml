@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/scraper
+    username: scraperuser
+    password: 12345678
+
+  liquibase:
+    enabled: true
+    change-log: db/changelog/db.changelog-master.xml

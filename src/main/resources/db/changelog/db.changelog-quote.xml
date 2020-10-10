@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd">
+    <changeSet  id="5"  author="Fronya">
+        <comment>Create Quote table</comment>
+        <createTable tableName="quote" schemaName="main">
+            <column autoIncrement="true" name="id" type="integer">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="value" type="text"/>
+            <column name="author_id" type="integer">
+                <constraints nullable="false" foreignKeyName="fk_quote_author"
+                             referencedTableSchemaName="main"
+                             referencedTableName="author"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+        <rollback>
+            <delete tableName="quote" schemaName="main"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
